@@ -1,2 +1,2 @@
-welcome/to/school
-ls -amvp
+#!/bin/bash
+ls -amvip
