@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# install and configure nginx on a remote ubuntu server
+
+sudo su
+apt update
+apt install -y nginx
+
+config_file="/etc/nginx/sites_available/example_ip"
+
+echo 'server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+
+	location / {
+		default_type test/plain;
+		echo 'Hello World!';
+	
+	}
+
+}' > "$config_file"
+
+ln -s "$config_file" /etc/nginx/sites_enabled/
+
+nginx -t && systemctl reload nginx
