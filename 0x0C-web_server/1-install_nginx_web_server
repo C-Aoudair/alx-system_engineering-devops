@@ -13,8 +13,8 @@ echo 'server {
 
 
 	location / {
-		default_type test/plain;
-		echo Hello World!;
+		default_type text/plain;
+		return 200 "Hello World!";
 	
 	}
 
