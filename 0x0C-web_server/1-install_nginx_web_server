@@ -1,24 +1,6 @@
 #!/usr/bin/env bash
 # install and configure nginx on a remote ubuntu server
 
-sudo apt-get update
-sudo apt-get install -y nginx
-
-config_file="/etc/nginx/sites-available/example_ip"
-
-sudo echo 'server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
-
-
-	location / {
-		default_type text/plain;
-		return 200 "Hello World!";
-	
-	}
-
-}' > "$config_file"
-
-sudo ln -s "$config_file" /etc/nginx/sites-enabled/
-
-nginx -t && systemctl reload nginx
+apt-get update
+apt-get install -y nginx
+echo "Hello world" > /var/www/html/index.html
