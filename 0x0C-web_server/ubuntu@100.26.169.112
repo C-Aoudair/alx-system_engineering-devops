@@ -5,6 +5,7 @@ sudo su<<EOF
 
 apt-get update
 apt-get install -y nginx
-echo 'Hello World!' | tee /var/www/html/index.html
+ufw allow 'Nginx HTTP'
+echo 'Hello World!' > /var/www/html/index.html
 systemctl start nginx
 EOF
