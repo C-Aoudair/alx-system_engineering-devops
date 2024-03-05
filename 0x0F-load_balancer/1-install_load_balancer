@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Configures HAproxy on the lb-01 server.
 apt-get update
-apt-get install haproxy
+apt-get -y install haproxy
+sed -i "$ a ENABLED=1"
 echo 'frontend http_front
     bind *:80
     default_backend http_back
