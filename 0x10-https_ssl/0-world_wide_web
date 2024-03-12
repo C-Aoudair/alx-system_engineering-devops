@@ -2,7 +2,7 @@
 # Dispalays information about subdomains.
 
 print_information () {
-	output=$(dig "$1"."$2" | grep -A1 'ANSWER SECTION:')
+	output=$(dig "$1"."$2" | grep -A1 'ANSWER SECTION:' | sed "s/^\S*/$1/")
         awk 'NR==2 {print "The subdomain",$1,"is a",$4,"record and points to",$5}' <<< "$output"
 	return
 }
