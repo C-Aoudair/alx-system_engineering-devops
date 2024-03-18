@@ -1,0 +1,4 @@
+# configures to allow http, https and ssh ports
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
