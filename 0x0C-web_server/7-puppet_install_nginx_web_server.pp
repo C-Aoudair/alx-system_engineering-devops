@@ -1,30 +1,24 @@
 # Script that installs and configures Nginx
-exec {'update':
-  provider => shell,
-  path     => '/usr/bin:/usr/sbin:/bin',
-  command  => 'sudo apt-get -y update',
+
+exec { 'update system':
+        command => '/usr/bin/apt-get update',
 }
 
-exec {'install':
-  provider => shell,
-  path     => '/usr/bin:/usr/sbin:/bin',
-  command  => 'sudo apt-get -y install nginx',
+package { 'nginx':
+	ensure => 'installed',
+	require => Exec['update system']
 }
 
-exec {'echo_html':
-  provider => shell,
-  path     => '/usr/bin:/usr/sbin:/bin',
-  command  => 'sudo echo "Holberton School" | sudo tee /var/www/html/index.nginx-debian.html',
+file {'/var/www/html/index.html':
+	content => 'Hello World!'
 }
 
-exec {'sed_config':
-  command  => 'sudo sed -i "/server_name _;/ a\\\trewrite ^/redirect_me http://www.youtube.com permanent;" /etc/nginx/sites-available/default',
-  provider => shell,
-  path     => '/usr/bin:/usr/sbin:/bin',
+exec {'redirect_me':
+	command => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
+	provider => 'shell'
 }
 
-exec {'start':
-  command  => 'sudo service nginx start',
-  provider => shell,
-  path     => '/usr/bin:/usr/sbin:/bin',
+service {'nginx':
+	ensure => running,
+	require => Package['nginx']
 }
