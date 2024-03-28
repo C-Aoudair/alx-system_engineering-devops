@@ -28,4 +28,4 @@ if __name__ == "__main__":
         )
 
     for title in completedTasks:
-        print(f"\t{title}")
+        print(f"\t {title}")
