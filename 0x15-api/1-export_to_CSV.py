@@ -9,9 +9,9 @@ import sys
 
 if __name__ == "__main__":
 
-    Id = int(sys.argv[1])
+    Id = sys.argv[1]
     r = requests.get(f'https://jsonplaceholder.typicode.com/users/{Id}')
-    name = r.json().get('name')
+    name = r.json().get('username')
 
     r = requests.get(
             'https://jsonplaceholder.typicode.com/todos', params={'userId': Id}
