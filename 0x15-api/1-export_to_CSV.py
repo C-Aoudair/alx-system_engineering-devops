@@ -4,6 +4,7 @@ returns information about his/her TODO list progress."""
 
 import requests
 import sys
+import csv
 
 
 if __name__ == "__main__":
@@ -14,18 +15,10 @@ if __name__ == "__main__":
 
     r = requests.get('https://jsonplaceholder.typicode.com/todos', params={'userId': Id})
 
-    tasks = r.json()
-    numberOfTasks = len(tasks)
-    completedTasks = []
-    for task in tasks:
-        if task.get('completed'):
-            completedTasks.append(task.get('title'))
+    data = r.json()
 
-    print("Employee {} is done with tasks({}/{}):".format(
-        name,
-        len(completedTasks),
-        numberOfTasks)
-        )
+    with open(f"{Id}.csv", 'w') as file:
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+        for row in data:
+            writer.writerow([Id, name, row.get('completed'), row.get('title')])
 
-    for title in completedTasks:
-        print(f"\t {title}")
