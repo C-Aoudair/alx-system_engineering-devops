@@ -11,9 +11,9 @@ def number_of_subscribers(subreddit):
     import requests
 
     r = requests.get(f'https://www.reddit.com/r/{subreddit}/about.json',
-                     headers={"User-Agent": "Custom"})
+                     headers={"User-Agent": "Custom"},
+                     allow_redirects=False)
 
-    if r.status_code == 200:
-        return r.json().get("data").get("subscribers")
-    else:
+    if r.status_code == 404:
         return 0
+    return r.json().get("data").get("subscribers")
