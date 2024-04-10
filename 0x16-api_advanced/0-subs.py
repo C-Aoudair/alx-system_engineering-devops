@@ -3,7 +3,10 @@
 
 
 def number_of_subscribers(subreddit):
-    """ Retures the number of subscribers for a given subreddit"""
+    """
+    Retures the number of subscribers for a given subreddit
+    - If not a valid subreddit, return 0.
+    """
 
     import requests
 
