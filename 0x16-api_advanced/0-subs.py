@@ -2,6 +2,7 @@
 """ Contains number_of_subscribers function"""
 import requests
 
+
 def number_of_subscribers(subreddit):
     """
     Retures the number of subscribers for a given subreddit
