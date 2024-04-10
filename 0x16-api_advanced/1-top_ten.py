@@ -6,10 +6,10 @@ import requests
 
 def top_ten(subreddit):
     """ Document"""
-
+    headers = {"User-Agent": "MyPythonScript/1.0 (Ubuntu 20.04; Python 3.4.3)"}
     request = requests.get(
         f"https://www.reddit.com/r/{subreddit}/hot.json",
-        headers={"User-Agent": "MyPythonScript/1.0 (Ubuntu 20.04; Python 3.4.3)"},
+        headers=headers,
         params={"limit": 10},
     )
 
