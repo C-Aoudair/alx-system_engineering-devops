@@ -9,7 +9,7 @@ def number_of_subscribers(subreddit):
     - If not a valid subreddit, return 0.
     """
     headers = {
-        "User-Agent": 'MyPythonScript/1.0 (Ubuntu 20.04; Python 3.4.3)'
+        "User-Agent": 'MyPythonScript/1.0 (Ubuntu 20.04; Python 3.4.3; u/Be_simple_67)'
     }
     r = requests.get(f"https://www.reddit.com/r/{subreddit}/about.json",
                      headers=headers,
