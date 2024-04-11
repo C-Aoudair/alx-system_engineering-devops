@@ -6,8 +6,8 @@ import requests
 
 def recurse(subreddit, hot_list=[], after=""):
     """ Document"""
-    headers={"User-Agent": "MyPythonScript/1.0 (Ubuntu 20.04; Python 3.4.3)"}
-    params={"after": after}
+    headers = {"User-Agent": "MyPythonScript/1.0 (Ubuntu 20.04; Python 3.4.3)"}
+    params = {"after": after}
     request = requests.get(
         "https://www.reddit.com/r/{}/hot.json".format(subreddit),
         headers=headers,
