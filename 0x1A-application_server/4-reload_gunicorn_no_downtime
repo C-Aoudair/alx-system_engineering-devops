@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
 
-echo "Reloading Gunicorn..."
 pgrep gunicorn | sudo xargs kill -HUP
-echo "Gunicorn reloaded."
