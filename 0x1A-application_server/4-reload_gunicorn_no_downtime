@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
 
-GUNICORN_PID=$(pgrep gunicorn)
-
-if [ -n "$GUNICORN_PID" ]; then
-    echo "Reloading Gunicorn..."
-    sudo kill -HUP "$GUNICORN_PID" && echo "Gunicorn reloaded."
-else
-    echo "Gunicorn is not running."
-fi
+echo "Reloading Gunicorn..."
+pgrep gunicorn | sudo xargs kill -HUP
+echo "Gunicorn reloaded."
