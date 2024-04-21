@@ -5,7 +5,7 @@ GUNICORN_PID=$(pgrep gunicorn)
 
 if [ -n "$GUNICORN_PID" ]; then
     echo "Reloading Gunicorn..."
-    kill -HUP "$GUNICORN_PID" && echo "Gunicorn reloaded."
+    sudo kill -HUP "$GUNICORN_PID" && echo "Gunicorn reloaded."
 else
     echo "Gunicorn is not running."
 fi
