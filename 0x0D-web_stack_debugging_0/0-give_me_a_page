@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # start apache2 webserver on a container
 
-docker exec 47ca3994a4910bbc29d1d8925b1c70e1bdd799f5442040365a7cb9a0db218021 service apache2 start
+service apache2 start
